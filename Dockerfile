@@ -1,12 +1,12 @@
-FROM python:3.12.1
+FROM python:3.12
 
 WORKDIR /var/www
 
-COPY /fastApiProject1/requierments.txt .
+COPY ./requirements.txt /var/www/requirements.txt
 
-RUN pip istall -r requierments.txt
+RUN pip istall -r /var/www/requirements.txt
 
-COPY fastApiProject1 .
+COPY ./project /var/www/project
 
-CMD ["fastapi","run","main.py"]
+CMD ["fastapi", "run", "app/main.py", "--port", "8000"]
 
